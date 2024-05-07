@@ -1,0 +1,14 @@
+PROJECT_SOURCE_DIR  当前项目所在的目录，即当前项目的 CMakeLists.txt 目录
+_SOURCE_DIR
+CMAKE_CURRENT_SOURCE_DIR
+
+
+CMAKE_INSTALL_PREFIX
+    cmake的默认安装路径，默认值是/usr/local 可以自己设置 cmake .. -DCMAKE_INSTALL_PREFIX=/install/location
+
+
+PROJECT_NAME  
+    The name of the project set by the current project(). 
+    (对于sublibrary子项目， 就是sublibrary；对于sublibrary1项目就是sublibrary1)
+
+
