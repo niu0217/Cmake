@@ -1,0 +1,27 @@
+include_directories(${Boost_INCLUDE_DIRS})
+    将 Boost 库的头文件目录添加到项目的包含目录中。
+    ${Boost_INCLUDE_DIRS} 是 Boost 库预定义的变量，包含了 Boost 库的头文件路径
+    通过将 Boost 头文件目录包含到项目中，你可以在你的代码中 #include <boost/xxx.hpp> 这样的 Boost 库头文件，
+    从而利用 Boost 提供的功能。这样做使得编译器能够在构建过程中正确地找到 Boost 库的头文件，方便你在项目中使用 Boost 库的各种功能。
+
+
+include_directories(${PROJECT_SOURCE_DIR})
+    将项目的源码目录 ${PROJECT_SOURCE_DIR} 添加到项目的头文件搜索路径中。
+    ${PROJECT_SOURCE_DIR} 就是Cmake文件所在的那个目录
+    通过包含项目的源码目录，你可以直接使用相对路径来引用项目中的头文件，而不需要在代码中写绝对路径。
+
+
+add_subdirectory(muduo/base)
+    告诉 CMake 在当前项目中添加一个子目录 muduo/base 并构建该子目录中的内容
+    当使用 add_subdirectory() 来添加子目录时，CMake 会处理子目录中的 CMakeLists.txt 文件，
+    并将其包含到当前项目中，使得子目录中的代码可以被编译、链接到当前项目中。
+
+
+add_library(muduo_net ${net_SRCS})
+    创建一个名为 muduo_net 的库，并将 ${net_SRCS} 中列出的源文件编译成该库
+    
+
+target_link_libraries(simple_chargen muduo_net)
+    simple_chargen将链接名为 muduo_net 的库。这意味着在构建 simple_chargen 目标时，
+    编译器将链接 muduo_net 库以允许 simple_chargen 访问 muduo_net 库中定义的功能
+    这种方法常用于在构建项目时指定需要链接的外部库，确保生成的可执行文件或库能够正常运行并访问所需的功能

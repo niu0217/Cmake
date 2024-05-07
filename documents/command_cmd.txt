@@ -1,0 +1,36 @@
+message()
+    用于打印日志消息
+    message(STATUS "found hiredis")
+
+
+aux_source_directory()
+    aux_source_directory(src SRC_LIST)    # 寻找当前路径src文件夹下所有cpp文件， 存储到SRC_LIST
+    message(STATUS "source file list: ${SRC_LIST}")
+    add_executable(target ${SRC_LIST})  # 编译src文件夹下所有cpp文件
+
+
+find_path()
+    find_path (<VAR> name1 [path1 path2 ...])  # 查找包含name1文件的文件夹路径，并将查找到的路径添加到变量VAR中
+    find_path(CARES_INCLUDE_DIR ares.h)   # 举例
+
+
+find_library()
+    find_library (<VAR> name1 [path1 path2 ...])  # 查找名字为name1的库文件，并将查找到的路径添加到变量VAR中
+    find_library(BOOSTPO_LIBRARY NAMES boost_program_options)
+
+
+include_directories()
+    当前CMakeList.txt中的所有目标以及所有在其调用点之后的所有目标将具有此头文件搜索路径
+
+
+target_include_directories()
+    指定目标包含的头文件路径
+
+
+target_link_libraries()
+    一般用来添加编译器库文件搜索路径
+
+
+add_subdirectory()
+    当使用 add_subdirectory() 来添加子目录时，CMake 会处理子目录中的 CMakeLists.txt 文件，
+    并将其包含到当前项目中，使得子目录中的代码可以被编译、链接到当前项目中。
